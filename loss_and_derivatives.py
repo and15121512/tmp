@@ -95,7 +95,7 @@ class LossAndDerivatives:
         """
 
         C = np.array([1, -1])
-        return (X.T).dot(C[ (Y - X.dot(w) > 0).astype('int32') ]) / Y.shape[1]
+        return (X.T).dot(C[ (Y - X.dot(w) > 0).astype('int32') ]) / (1 if Y.ndim == 1 else Y.shape[1])
 
     @staticmethod
     def l2_reg_derivative(w):
